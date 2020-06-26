@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example Component</title>
+</head>
+<body>
+  <div>
+    <button (click)="addNumber()">Add number</button>
+    <button (click)="subtractNumber()">Subtract number</button>
+  </div>
+
+  <h1>current number: {{currentNumber}}</h1>
+
+  <strong>Input Biodata:</strong>
+  <form id="biodata-form" [formGroup]="biodataForm">
+    <div>
+      <label for="name-input"></label>
+      <input id="name-input" placeholder="Name" formControlName="name">
+    </div>
+    <div>
+      <label for="age-input"></label>
+      <input id="age-input" placeholder="Age" formControlName="age">
+    </div>
+    <div>
+      <label for="gender-input"></label>
+      <input id="gender-input" placeholder="Gender" formControlName="gender">
+    </div>
+    <button (click)="addBiodata()">Add</button>
+  </form>
+
+  <p-table [value]="biodataList">
+    <ng-template pTemplate="header">
+      <tr>
+        <th id="name-header">Name</th>
+        <th id="age-header">Age</th>
+        <th id="gender-header">Gender</th>
+        <th id="action-header">Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-biodata>
+      <tr>
+        <td>{{biodata.name}}</td>
+        <td>{{biodata.age}}</td>
+        <td>{{biodata.gender}}</td>
+        <td>
+          <button (click)="deleteBiodata(biodata)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</body>
+</html>
